@@ -28,6 +28,7 @@ tags
 *.eggs/
 .installed.cfg
 *.egg-info
+*.spec
 
 # Unittest and coverage
 htmlcov/*
@@ -39,8 +40,8 @@ coverage.xml
 .pytest_cache/
 
 # Build and docs folder/files
-build/*
-dist/*
+**/build/*
+**/dist/*
 sdist/*
 docs/api/*
 docs/_rst/*

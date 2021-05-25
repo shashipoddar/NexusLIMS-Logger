@@ -1,21 +1,34 @@
 ================
-nexuslims-logger
+NexusLIMS-Logger
 ================
 
 
-Add a short description here!
+Logger (TKinter) GUI branched off from original NexusLIMS repository.
 
 
-Description
-===========
+Run in command line
+===================
 
-A longer description of your project goes here...
+1. Edit config file -- ``$HOME/nexuslims/gui/config.json``
+2. ``python -m nexuslims_logger.main``
 
+Packaging as a single executable
+================================
 
-.. _pyscaffold-notes:
+Require ``pyinstaller`` installed. (``pip install pyinstaller``)
 
-Note
-====
+(under ``src/nexuslims_logger/``)
 
-This project has been set up using PyScaffold 4.0.1. For details and usage
-information on PyScaffold see https://pyscaffold.org/.
+On Windows PowerShell::
+
+    pyinstaller -y -F -w `
+        -n "NexusLIMS Session Logger" `
+        -i "resources\\logo_bare_xp.ico" `
+        --add-data "resources;resources" main.py
+
+On MacOS::
+
+   pyinstaller -y -F -w \
+       -n "NexusLIMS Session Logger" \
+       -i "resources/logo_bare_xp.ico" \
+       --add-data "resources:resources" main.py

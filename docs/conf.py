@@ -11,6 +11,7 @@ import os
 import sys
 import inspect
 import shutil
+from datetime import datetime
 
 # -- Path setup --------------------------------------------------------------
 
@@ -94,7 +95,7 @@ master_doc = "index"
 
 # General information about the project.
 project = "nexuslims-logger"
-copyright = "2021, Weinan Si"
+copyright = f"{datetime.now().year}, Euclid Techlabs, NIST ODI"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
