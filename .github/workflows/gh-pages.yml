@@ -1,0 +1,32 @@
+name: github pages
+
+on: [push, pull_request]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+
+      - name: Install dependencies
+        run: |
+          pip install -r docs/requirements.txt
+          pip install -e .
+
+      - name: Build documentation
+        run: |
+          make -C docs html
+          mkdir public
+          mv docs/_build/html/* public/
+
+      - name: GitHub Pages action
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public
