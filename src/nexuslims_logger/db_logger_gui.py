@@ -202,7 +202,8 @@ class MainApp(Tk):
 
         self.tooltip_font = "TkDefaultFont"
         self.info_font = 'TkDefaultFont 16 bold'
-        self.geometry(self.screen_res.get_center_geometry_string(350, 530))
+        #self.geometry(self.screen_res.get_center_geometry_string(350, 530))
+        self.geometry(self.screen_res.get_center_geometry_string(400, 600))
         self.minsize(1, 1)
         self.maxsize(3840, 1170)
         self.resizable(1, 1)
@@ -303,7 +304,7 @@ class MainApp(Tk):
         self.end_icon = PhotoImage(file=resource_path('window-close.png'))
         self.end_button = Button(self.button_frame,
                                  # takefocus="",
-                                 text="End session",
+                                 text="End session",               
                                  padx=10, pady=10,
                                  state=DISABLED,
                                  compound=LEFT,
@@ -321,7 +322,7 @@ class MainApp(Tk):
         self.log_button = Button(self.button_frame,
                                  text="  Show Debug Log  ",
                                  command=lambda: LogWindow(parent=self),
-                                 padx=5, pady=10,
+                                 padx=2.7, pady=10,
                                  compound=LEFT,
                                  image=self.log_icon)
         self.log_button.config(fg='black', font=('kDefaultFont',12,'bold'), relief=RAISED)
@@ -330,7 +331,7 @@ class MainApp(Tk):
         self.note_button = Button(self.button_frame,
                                  text="Add Session Note",
                                  command=lambda: NoteWindow(parent=self),
-                                 padx=5, pady=10,
+                                 padx=2.7, pady=10,
                                  compound=LEFT,
                                  image=self.note_icon)
 
@@ -651,7 +652,7 @@ class PauseOrEndDialogue(Toplevel):
         self.end_button = Button(self.button_frame,
                                  text=end_text,
                                  command=self.click_end,
-                                 padx=10, pady=5, width=80,
+                                 padx=10, pady=10, width=80,
                                  compound=LEFT,
                                  image=self.end_icon)
         self.pause_button = Button(self.button_frame,
