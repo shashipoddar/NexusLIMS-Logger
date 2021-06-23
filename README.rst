@@ -5,19 +5,48 @@ NexusLIMS-Logger
 
 Logger (TKinter) GUI branched off from original NexusLIMS repository.
 
+To run the Logger GUI, a file named ``config.json`` must be created and stored in the location::
+
+    $HOME/nexuslims/gui/config.json
+
+The default ``$HOME`` directory is unique for different operating systems.  A discription of
+the default $HOME directories for Linux, MacOS, and Windows can be found `here <https://en.wikipedia.org/wiki/Home_directory>`_.
+The ``config.json`` file contains information about the user that is required by the Logger GUI
+to store data.  The required information is as follows::
+
+    {
+        "database_name": "nexuslims_db.sqlite",
+        "database_relpath": "TEMdata/nexuslims",
+        "networkdrive_hostname": "192.168.0.166",
+        "networkdrive_workgroup": "",
+        "networkdrive_username": "",
+        "networddrive_password": "",
+        "daq_relpath": "TEMdata/daq"
+    }
+
+There are two methods to run the Logger GUI; through a command line or as an executable file
 
 Run in command line
 ===================
 
-1. Edit config file -- ``$HOME/nexuslims/gui/config.json``
-2. ``python -m nexuslims_logger.main``
+To run the Logger GUI in the command line, clone the NexusLIMS-Logger repository to your local drive::
+
+    git clone https://github.com/Euclid-Techlabs-LLC/NexusLIMS-Logger.git
+    cd NexusLIMS-Logger
+
+then run the commands::
+
+    pip install .
+    python -m nexuslims_logger.main
 
 Packaging as a single executable
 ================================
 
-Require ``pyinstaller`` installed. (``pip install pyinstaller``)
+Requires ``pyinstaller`` to be installed::
 
-(under ``src/nexuslims_logger/``)
+    pip install pyinstaller
+
+in the directory ``src/nexuslims_logger/``.  Then run the commands shown below.
 
 On Windows PowerShell::
 
