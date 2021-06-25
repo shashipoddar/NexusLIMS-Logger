@@ -304,7 +304,7 @@ class MainApp(Tk):
         self.end_icon = PhotoImage(file=resource_path('window-close.png'))
         self.end_button = Button(self.button_frame,
                                  # takefocus="",
-                                 text="End session",               
+                                 text="End session",
                                  padx=10, pady=10,
                                  state=DISABLED,
                                  compound=LEFT,
