@@ -203,7 +203,7 @@ class MainApp(Tk):
         self.tooltip_font = "TkDefaultFont"
         self.info_font = 'TkDefaultFont 16 bold'
         #self.geometry(self.screen_res.get_center_geometry_string(350, 530))
-        self.geometry(self.screen_res.get_center_geometry_string(400, 600))
+        self.geometry(self.screen_res.get_center_geometry_string(400, 650))
         self.minsize(1, 1)
         self.maxsize(3840, 1170)
         self.resizable(1, 1)
@@ -620,7 +620,7 @@ class PauseOrEndDialogue(Toplevel):
                                text="Are you sure?",
                                font=("TkDefaultFont", 14, "bold"),
                                wraplength=250,
-                               anchor='w',
+                               anchor='n',
                                justify='left')
 
         if db_logger.session_started:
@@ -633,7 +633,7 @@ class PauseOrEndDialogue(Toplevel):
                   "below."
 
         self.warn_label = Label(self.label_frame,
-                                wraplength=250,
+                                wraplength=350,
                                 anchor='w',
                                 justify='left',
                                 text=msg)
@@ -652,7 +652,7 @@ class PauseOrEndDialogue(Toplevel):
         self.end_button = Button(self.button_frame,
                                  text=end_text,
                                  command=self.click_end,
-                                 padx=10, pady=10, width=80,
+                                 padx=10, pady=5, width=80,
                                  compound=LEFT,
                                  image=self.end_icon)
         self.pause_button = Button(self.button_frame,
@@ -668,11 +668,11 @@ class PauseOrEndDialogue(Toplevel):
                                     compound=LEFT,
                                     image=self.cancel_icon)
 
-        self.top_frame.grid(row=0, column=0)
-        self.error_icon_label.grid(column=0, row=0, padx=20, pady=25)
-        self.label_frame.grid(column=1, row=0, padx=0, pady=0)
-        self.top_label.grid(row=0, column=0, padx=10, pady=0, sticky=(W,S))
-        self.warn_label.grid(row=1, column=0, padx=10, pady=(5,0))
+        self.top_frame.place(relwidth = 1, relheight = 1)
+        self.error_icon_label.grid(column=0, row=0, padx=(20,0), pady=5)
+        self.label_frame.grid(column=1, row=0, padx=10, pady=10)
+        self.top_label.grid(row=0, column=0, padx=(0,10), pady=0, sticky=(W,S))
+        self.warn_label.grid(row=1, column=0, padx=(0,10) , pady=(5,0))
 
         self.button_frame.grid(row=1, column=1, ipadx=10, ipady=5)
         self.end_button.grid(row=0, column=0,  padx=10)
@@ -735,7 +735,7 @@ class HangingSessionDialog(Toplevel):
         self.response = StringVar()
         self.screen_res = ScreenRes() if screen_res is None else screen_res
         Toplevel.__init__(self, parent)
-        self.geometry(self.screen_res.get_center_geometry_string(400, 250))
+        self.geometry(self.screen_res.get_center_geometry_string(480, 175))
         self.grab_set()
         self.title("Incomplete session warning")
         self.protocol("WM_DELETE_WINDOW", self.destroy)
@@ -762,7 +762,7 @@ class HangingSessionDialog(Toplevel):
         self.top_label = Label(self.label_frame,
                                text="Warning!",
                                font=("TkDefaultFont", 14, "bold"),
-                               wraplength=250,
+                               wraplength=200,
                                anchor='w',
                                justify='left',
                                )
@@ -775,7 +775,7 @@ class HangingSessionDialog(Toplevel):
                "and start a new one?"
 
         self.warn_label = Label(self.label_frame,
-                                wraplength=250,
+                                wraplength=350,
                                 anchor='w',
                                 justify='left',
                                 text=msg)
@@ -799,13 +799,13 @@ class HangingSessionDialog(Toplevel):
                                  compound=LEFT,
                                  image=self.new_icon)
 
-        self.top_frame.grid(row=0, column=0)
-        self.error_icon_label.grid(column=0, row=0, padx=20, pady=25)
+        self.top_frame.place(relwidth=1, relheight=1)
+        self.error_icon_label.grid(column=0, row=0, padx=(20,5), pady=5)
         self.label_frame.grid(column=1, row=0, padx=0, pady=0)
-        self.top_label.grid(row=0, column=0, padx=10, pady=0, sticky=(W,S))
-        self.warn_label.grid(row=1, column=0, padx=10, pady=(5,0))
+        self.top_label.grid(row=0, column=0, padx=(5,10), pady=(15,5), sticky=(W,S))
+        self.warn_label.grid(row=1, column=0, padx=(5,10), pady=(5,0))
 
-        self.button_frame.grid(row=1, column=1,
+        self.button_frame.grid(row=1, column=0,
                                sticky=S, ipadx=10, ipady=5)
         self.continue_button.grid(row=0, column=0, sticky=E, padx=15)
         self.new_button.grid(row=0, column=1, sticky=W, padx=15)
