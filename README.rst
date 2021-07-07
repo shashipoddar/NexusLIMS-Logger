@@ -24,6 +24,11 @@ to store data.  The required information is as follows::
         "daq_relpath": "TEMdata/daq"
     }
 
+``database_name``, ``database_relpath``, ``networkdrive_hostname`` and ``daq_relpath`` must have the values specified
+in the above example. ``networkdrive_workgroup`` and ``networkdrive_password`` are not required entities when the Logger GUI
+is installed but they can be configfured by administrators to be required. The ``networkdrive_username`` entity
+must be filled in prior to running the Logger GUI or the program will not run.
+
 There are two methods to run the Logger GUI; through a command line or as an executable file
 
 Run in command line
