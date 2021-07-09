@@ -94,7 +94,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "nexuslims-logger"
+project = "NexusLIMS-Logger"
 copyright = f"{datetime.now().year}, Euclid Techlabs, NIST ODI"
 
 # The version info for the project you're documenting, acts as replacement for
