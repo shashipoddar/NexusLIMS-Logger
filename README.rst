@@ -10,7 +10,7 @@ To run the Logger GUI, a file named ``config.json`` must be created and stored i
     $HOME/nexuslims/gui/config.json
 
 The default ``$HOME`` directory is unique for different operating systems.  A discription of
-the default $HOME directories for Linux, MacOS, and Windows can be found `here <https://en.wikipedia.org/wiki/Home_directory>`_.
+the default ``$HOME`` directories for Linux, MacOS, and Windows can be found `here <https://en.wikipedia.org/wiki/Home_directory>`_.
 The ``config.json`` file contains information about the user that is required by the Logger GUI
 to store data.  The required information is as follows::
 
@@ -29,7 +29,7 @@ in the above example. ``networkdrive_workgroup`` and ``networkdrive_password`` a
 is installed but they can be configfured by administrators to be required. The ``networkdrive_username`` entity
 must be filled in prior to running the Logger GUI or the program will not run.
 
-There are two methods to run the Logger GUI; through a command line or as an executable file
+There are two methods to run the Logger GUI: through a command line or as an executable file
 
 Run in command line
 ===================
