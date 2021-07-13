@@ -2,7 +2,7 @@ Administrator Documentation
 ===========================
 
 This document is meant for administrators to understand how to properly configure the Logger GUI 
-and NexusLIMS back-end for users.
+and NexusLIMS back end for users.
 
 Cloning the NexusLIMS Back End
 ++++++++++++++++++++++++++++++++
