@@ -46,5 +46,5 @@ Building the Instruments Table
 ++++++++++++++++++++++++++++++
 When all the necessary user information has been inserted into the instruments.csv file, a step must be 
 taken to convert the .csv file into a .db database table.  Running the Python script ``create_db.py`` 
-(located at ``\Github\nexuslims\scripts\create_db.py``) will input the instruments.csv data into a table contained 
+(located at ``\path_to_repository\nexuslims\scripts\create_db.py``) will input the instruments.csv data into a table contained 
 in the NexusLIMS database.
