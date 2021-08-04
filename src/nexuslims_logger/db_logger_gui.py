@@ -3,6 +3,7 @@ import queue
 import sys
 import threading
 import time
+import sqlite3
 from datetime import datetime
 from tkinter import *
 from tkinter import messagebox, ttk
@@ -1081,12 +1082,31 @@ class NoteWindow(Toplevel):
     def save_note(self):
             #Save the current session note in the text box, overwrite previous saved note
             self.note = self.session_note.get("1.0", END)
+
             #escape single quote by doubling it so it won't cause issues with sql insert_statement
             self.note = self.note.replace("'", "''")
+            #con = sqlite3.connect("C:\\Users\\shash\\nexuslims\\scripts\\note_db")
+            con = sqlite3.connect('note_db')
+            cur = con.cursor()
+            cur.execute(""" CREATE TABLE IF NOT EXISTS session_log (
+                             session_note text)
+                             """ )
+            cur.execute("INSERT INTO session_log(session_note) values (?)", (self.note,))
+            #cur.execute("UPDATE session_log SET session_note = ?", (self.note,))
+
+            con.commit()
+
+            con.close()
+
+
             if not (self.note == self.old_note):
                     self.old_note = self.note
                     #self.parent.notes = self.note
                     self.parent.db_logger.session_note = self.note
+
+
+
+        
 
     def delete_note(self):
             #delete the current session note in the text box

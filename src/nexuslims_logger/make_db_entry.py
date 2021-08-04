@@ -47,6 +47,7 @@ from datetime import datetime
 from uuid import uuid4
 
 
+
 def get_drives():
     """
     Get the drive letters (uppercase) in current use by Windows
@@ -495,10 +496,17 @@ class DBSessionLogger:
                             self.progress_num += 1
                         return True
                     elif self.last_entry_type == "START":
+                        with sqlite3.connect('note_db') as con:
+                            with con as cur:
+                                r = cur.execute("SELECT * FROM session_log ORDER BY rowid DESC LIMIT 1")
+                                self.session_note = r.fetchone()[0]
+
                         self.log('Database is inconsistent for the '
                                  '{} '.format(self.instr_schema_name) +
                                  '(last entry [id_session_log = '
                                  '{}]'.format(self.last_session_row_number) +
+                                 '(with message [session_note = '
+                                 '{}]'.format(self.session_note) +
                                  ' was a "START")', 0)
                         if thread_queue:
                             thread_queue.put(('Database is inconsistent!',
