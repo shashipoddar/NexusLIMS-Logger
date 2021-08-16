@@ -1096,7 +1096,8 @@ class NoteWindow(Toplevel):
             self.note = self.note.replace("'", "''") #this one in first
             self.path = self.parent.db_logger.full_path
             self.parent.db_logger.log('Path is {}'.format(self.path),2)
-            self.parent.db_logger.log('Old note from NW2 is {}'.format(self.note),2)
+
+            #DB connection
             self.parent.db_logger.mount_network_share(mount_point = None)
             con = sqlite3.connect(self.path)
             cur = con.cursor()
