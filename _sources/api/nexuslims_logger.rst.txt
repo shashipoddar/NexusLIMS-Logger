@@ -1,5 +1,5 @@
-nexuslims\_logger package
-=========================
+nexuslims\_logger namespace
+===========================
 
 Submodules
 ----------
@@ -24,14 +24,6 @@ nexuslims\_logger.make\_db\_entry module
 ----------------------------------------
 
 .. automodule:: nexuslims_logger.make_db_entry
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: nexuslims_logger
    :members:
    :undoc-members:
    :show-inheritance:

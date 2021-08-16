@@ -168,7 +168,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">last_session_ts</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">progress_num</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">session_note</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">db_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;database_relpath&quot;</span><span class="p">]))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;networddrive_password&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;networddrive_password&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">drive_letter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">db_name</span><span class="p">)</span>
@@ -183,7 +182,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Unused drives are: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">get_free_drives</span><span class="p">()),</span> <span class="mi">2</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;First available drive letter is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">drive_letter</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-
+            
 <div class="viewcode-block" id="DBSessionLogger.log"><a class="viewcode-back" href="../../api/nexuslims_logger.html#nexuslims_logger.make_db_entry.DBSessionLogger.log">[docs]</a>    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_print</span><span class="p">,</span> <span class="n">this_verbosity</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Log a message to the console, only printing if the given verbosity is</span>
@@ -496,7 +495,7 @@
         <span class="c1"># Get last inserted line for this instrument that is not a record</span>
         <span class="c1"># generation (should be either a START or END)</span>
         <span class="n">query_statement</span> <span class="o">=</span> <span class="s1">&#39;SELECT event_type, session_identifier, &#39;</span> \
-                          <span class="s1">&#39;id_session_log, timestamp FROM session_log WHERE &#39;</span> \
+                          <span class="s1">&#39;id_session_log, session_note, timestamp FROM session_log WHERE &#39;</span> \
                           <span class="s1">&#39;instrument = &quot;</span><span class="si">{}</span><span class="s1">&quot; &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instr_pid</span><span class="p">)</span> <span class="o">+</span> \
                           <span class="s1">&#39;AND NOT event_type = &quot;RECORD_GENERATION&quot; &#39;</span> <span class="o">+</span> \
                           <span class="s1">&#39;ORDER BY timestamp DESC LIMIT 1&#39;</span>
@@ -517,7 +516,7 @@
                         <span class="bp">self</span><span class="o">.</span><span class="n">last_entry_type</span> <span class="o">=</span> <span class="s2">&quot;END&quot;</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">last_entry_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_session_id</span><span class="p">,</span> \
-                        <span class="bp">self</span><span class="o">.</span><span class="n">last_session_row_number</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_session_ts</span> <span class="o">=</span> <span class="n">row</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">last_session_row_number</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">session_note</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_session_ts</span> <span class="o">=</span> <span class="n">row</span>
                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_entry_type</span> <span class="o">==</span> <span class="s2">&quot;END&quot;</span><span class="p">:</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Verified database consistency for the &#39;</span>
                                  <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instr_schema_name</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
@@ -529,10 +528,6 @@
                             <span class="bp">self</span><span class="o">.</span><span class="n">progress_num</span> <span class="o">+=</span> <span class="mi">1</span>
                         <span class="k">return</span> <span class="kc">True</span>
                     <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_entry_type</span> <span class="o">==</span> <span class="s2">&quot;START&quot;</span><span class="p">:</span>
-                        <span class="k">with</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;note_db&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
-                            <span class="k">with</span> <span class="n">con</span> <span class="k">as</span> <span class="n">cur</span><span class="p">:</span>
-                                <span class="n">r</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM session_log ORDER BY rowid DESC LIMIT 1&quot;</span><span class="p">)</span>
-                                <span class="bp">self</span><span class="o">.</span><span class="n">session_note</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
                         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Database is inconsistent for the &#39;</span>
                                  <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instr_schema_name</span><span class="p">)</span> <span class="o">+</span>
@@ -947,6 +942,8 @@
     <span class="n">db_logger</span><span class="o">.</span><span class="n">db_logger_setup</span><span class="p">()</span>
     <span class="n">db_logger</span><span class="o">.</span><span class="n">process_end</span><span class="p">()</span>
     <span class="n">db_logger</span><span class="o">.</span><span class="n">db_logger_teardown</span><span class="p">()</span></div>
+
+
 </pre></div>
 
           </div>
