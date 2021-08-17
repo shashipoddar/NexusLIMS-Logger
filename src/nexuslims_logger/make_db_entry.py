@@ -46,8 +46,6 @@ import sys
 from datetime import datetime
 from uuid import uuid4
 
-
-
 def get_drives():
     """
     Get the drive letters (uppercase) in current use by Windows
@@ -69,7 +67,6 @@ def get_drives():
         bitmask >>= 1
 
     return drives
-
 
 def get_free_drives():
     """
@@ -495,7 +492,6 @@ class DBSessionLogger:
                             self.progress_num += 1
                         return True
                     elif self.last_entry_type == "START":
-
                         self.log('Database is inconsistent for the '
                                  '{} '.format(self.instr_schema_name) +
                                  '(last entry [id_session_log = '
