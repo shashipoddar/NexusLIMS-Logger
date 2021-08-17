@@ -79,8 +79,6 @@
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">uuid4</span>
 
-
-
 <div class="viewcode-block" id="get_drives"><a class="viewcode-back" href="../../api/nexuslims_logger.html#nexuslims_logger.make_db_entry.get_drives">[docs]</a><span class="k">def</span> <span class="nf">get_drives</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the drive letters (uppercase) in current use by Windows</span>
@@ -102,7 +100,6 @@
         <span class="n">bitmask</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">drives</span></div>
-
 
 <div class="viewcode-block" id="get_free_drives"><a class="viewcode-back" href="../../api/nexuslims_logger.html#nexuslims_logger.make_db_entry.get_free_drives">[docs]</a><span class="k">def</span> <span class="nf">get_free_drives</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -528,7 +525,6 @@
                             <span class="bp">self</span><span class="o">.</span><span class="n">progress_num</span> <span class="o">+=</span> <span class="mi">1</span>
                         <span class="k">return</span> <span class="kc">True</span>
                     <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_entry_type</span> <span class="o">==</span> <span class="s2">&quot;START&quot;</span><span class="p">:</span>
-
                         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Database is inconsistent for the &#39;</span>
                                  <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instr_schema_name</span><span class="p">)</span> <span class="o">+</span>
                                  <span class="s1">&#39;(last entry [id_session_log = &#39;</span>
